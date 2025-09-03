@@ -1,0 +1,137 @@
+{
+  "providers": [
+    {
+      "type": "space",
+      "advances": {
+        "/": -1,
+        ".": -8
+      }
+    },
+    {
+      "type": "bitmap",
+      "file": "status:font/background-1-1.png",
+      "ascent": 14,
+      "height": 222,
+      "chars": [
+        "\ue011"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "status:font/background-1-4.png",
+      "ascent": 14,
+      "height": 222,
+      "chars": [
+        "\ue014"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "status:font/background-1-5.png",
+      "ascent": 14,
+      "height": 222,
+      "chars": [
+        "\ue015"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "status:font/background-2-1.png",
+      "ascent": 14,
+      "height": 222,
+      "chars": [
+        "\ue021"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "status:font/background-2-4.png",
+      "ascent": 14,
+      "height": 222,
+      "chars": [
+        "\ue024"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "status:font/background-2-5.png",
+      "ascent": 14,
+      "height": 222,
+      "chars": [
+        "\ue025"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "status:font/background-3-1.png",
+      "ascent": 14,
+      "height": 222,
+      "chars": [
+        "\ue031"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "status:font/background-3-4.png",
+      "ascent": 14,
+      "height": 222,
+      "chars": [
+        "\ue034"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "status:font/background-3-5.png",
+      "ascent": 14,
+      "height": 222,
+      "chars": [
+        "\ue035"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "status:font/neutral.png",
+      "ascent": 7,
+      "height": 8,
+      "chars": [
+        "1"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "status:font/dnd.png",
+      "ascent": 7,
+      "height": 8,
+      "chars": [
+        "2"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "status:font/open.png",
+      "ascent": 7,
+      "height": 8,
+      "chars": [
+        "3"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "status:font/recording.png",
+      "ascent": 7,
+      "height": 8,
+      "chars": [
+        "4"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "status:font/streaming.png",
+      "ascent": 7,
+      "height": 8,
+      "chars": [
+        "5"
+      ]
+    }
+  ]
+}

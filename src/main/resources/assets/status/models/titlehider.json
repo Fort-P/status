@@ -1,0 +1,12 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "status:item/titlehider"
+  },
+  "display": {
+    "gui": {
+            "scale": [3.1, 0.5, 1],
+      "translation": [16, -16, 0]
+    }
+  }
+}

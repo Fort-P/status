@@ -1,0 +1,25 @@
+{
+  "schemaVersion": 1,
+  "id": "status",
+  "version": "${version}",
+  "name": "Status",
+  "description": "A server-side implementation of the Status Mod",
+  "authors": [],
+  "contact": {},
+  "license": "LGPL-3.0",
+  "icon": "assets/status/icon.png",
+  "environment": "server",
+  "entrypoints": {
+    "main": [
+      "org.fortp.status.Status"
+    ]
+  },
+  "mixins": [
+    "status.mixins.json"
+  ],
+  "depends": {
+    "fabricloader": ">=${loader_version}",
+    "fabric": "*",
+    "minecraft": "${minecraft_version}"
+  }
+}
