@@ -4,88 +4,163 @@
       "type": "space",
       "advances": {
         "/": -1,
-        ".": -8
+        ".": -8,
+        "-": -151,
+        "_": -91,
+        " ": 18
       }
     },
     {
       "type": "bitmap",
-      "file": "status:font/background-1-1.png",
+      "file": "status:font/background.png",
       "ascent": 14,
       "height": 222,
+      "chars": [
+        "\ue000"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "status:font/buttons/no_sleep_off.png",
+      "ascent": -23,
+      "height": 16,
+      "chars": [
+        "\ue001"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "status:font/buttons/no_sleep_off_pressed.png",
+      "ascent": -23,
+      "height": 16,
+      "chars": [
+        "\ue002"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "status:font/buttons/no_sleep.png",
+      "ascent": -23,
+      "height": 16,
+      "chars": [
+        "\ue003"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "status:font/buttons/no_sleep_pressed.png",
+      "ascent": -23,
+      "height": 16,
+      "chars": [
+        "\ue004"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "status:font/buttons/no_availability.png",
+      "ascent": -59,
+      "height": 16,
+      "chars": [
+        "\ue010"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "status:font/buttons/no_availability_pressed.png",
+      "ascent": -59,
+      "height": 16,
       "chars": [
         "\ue011"
       ]
     },
     {
       "type": "bitmap",
-      "file": "status:font/background-1-4.png",
-      "ascent": 14,
-      "height": 222,
+      "file": "status:font/buttons/dnd.png",
+      "ascent": -77,
+      "height": 16,
       "chars": [
-        "\ue014"
+        "\ue020"
       ]
     },
     {
       "type": "bitmap",
-      "file": "status:font/background-1-5.png",
-      "ascent": 14,
-      "height": 222,
-      "chars": [
-        "\ue015"
-      ]
-    },
-    {
-      "type": "bitmap",
-      "file": "status:font/background-2-1.png",
-      "ascent": 14,
-      "height": 222,
+      "file": "status:font/buttons/dnd_pressed.png",
+      "ascent": -77,
+      "height": 16,
       "chars": [
         "\ue021"
       ]
     },
     {
       "type": "bitmap",
-      "file": "status:font/background-2-4.png",
-      "ascent": 14,
-      "height": 222,
+      "file": "status:font/buttons/open.png",
+      "ascent": -95,
+      "height": 16,
       "chars": [
-        "\ue024"
+        "\ue030"
       ]
     },
     {
       "type": "bitmap",
-      "file": "status:font/background-2-5.png",
-      "ascent": 14,
-      "height": 222,
-      "chars": [
-        "\ue025"
-      ]
-    },
-    {
-      "type": "bitmap",
-      "file": "status:font/background-3-1.png",
-      "ascent": 14,
-      "height": 222,
+      "file": "status:font/buttons/open_pressed.png",
+      "ascent": -95,
+      "height": 16,
       "chars": [
         "\ue031"
       ]
     },
     {
       "type": "bitmap",
-      "file": "status:font/background-3-4.png",
-      "ascent": 14,
-      "height": 222,
+      "file": "status:font/buttons/no_status.png",
+      "ascent": -127,
+      "height": 16,
       "chars": [
-        "\ue034"
+        "\ue040"
       ]
     },
     {
       "type": "bitmap",
-      "file": "status:font/background-3-5.png",
-      "ascent": 14,
-      "height": 222,
+      "file": "status:font/buttons/no_status_pressed.png",
+      "ascent": -127,
+      "height": 16,
       "chars": [
-        "\ue035"
+        "\ue041"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "status:font/buttons/recording.png",
+      "ascent": -145,
+      "height": 16,
+      "chars": [
+        "\ue050"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "status:font/buttons/recording_pressed.png",
+      "ascent": -145,
+      "height": 16,
+      "chars": [
+        "\ue051"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "status:font/buttons/streaming.png",
+      "ascent": -163,
+      "height": 16,
+      "chars": [
+        "\ue060"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "status:font/buttons/streaming_pressed.png",
+      "ascent": -163,
+      "height": 16,
+      "chars": [
+        "\ue061"
       ]
     },
     {
@@ -117,7 +192,7 @@
     },
     {
       "type": "bitmap",
-      "file": "status:font/recording.png",
+      "file": "status:font/neutral.png",
       "ascent": 7,
       "height": 8,
       "chars": [
@@ -126,11 +201,20 @@
     },
     {
       "type": "bitmap",
-      "file": "status:font/streaming.png",
+      "file": "status:font/recording.png",
       "ascent": 7,
       "height": 8,
       "chars": [
         "5"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "status:font/streaming.png",
+      "ascent": 7,
+      "height": 8,
+      "chars": [
+        "6"
       ]
     }
   ]

@@ -4,6 +4,7 @@ import net.minecraft.server.network.ServerPlayerEntity;
 import net.minecraft.text.Text;
 import org.fortp.status.utils.PlayerData;
 import org.spongepowered.asm.mixin.Mixin;
+import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.Unique;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
@@ -11,9 +12,13 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 @Mixin(ServerPlayerEntity.class)
-public class ServerPlayerEntityMixin implements PlayerData{
+public abstract class ServerPlayerEntityMixin implements PlayerData{
+    @Shadow
+    public abstract void sendMessage(Text message);
+
     @Unique private int status$availability = 1;
     @Unique private int status$status = 1;
+    @Unique private boolean staus$noSleep = false;
 
     @Unique
     public void status$setAvailability(int newAvailability) {
@@ -35,9 +40,20 @@ public class ServerPlayerEntityMixin implements PlayerData{
         return this.status$status;
     }
 
+    @Override
+    public boolean status$getNoSleep() {
+        return this.staus$noSleep;
+    }
+
+    @Override
+    public void status$setNoSleep(boolean noSleep) {
+        this.staus$noSleep = noSleep;
+    }
+
     @Inject(method = "copyFrom", at = @At("TAIL"))
     private void copyFromMixin(ServerPlayerEntity oldPlayer, boolean alive, CallbackInfo ci) {
         if (oldPlayer instanceof PlayerData playerData) {
+            this.sendMessage(Text.literal("hi new creature that shouldn't be new!!!"));
             this.status$availability = playerData.status$getAvailability();
             this.status$status = playerData.status$getStatus();
         }
