@@ -11,6 +11,7 @@ import net.minecraft.text.Style;
 import net.minecraft.text.Text;
 import net.minecraft.util.Formatting;
 import net.minecraft.util.Identifier;
+import net.minecraft.world.GameRules;
 import org.fortp.status.Status;
 import org.fortp.status.utils.PlayerData;
 import org.fortp.status.utils.TickScheduler;
@@ -171,12 +172,15 @@ public class StatusGui extends SimpleGui {
                         .setStyle(Style.EMPTY.withColor(Formatting.DARK_AQUA)), false);
             } else {
                 Status.noSleepers.add(player.getUuid());
+                player.getServer().getGameRules().get(GameRules.PLAYERS_SLEEPING_PERCENTAGE).set(75, player.getServer());
             }
         }
 
         if (Status.noSleepers.isEmpty() && !this.noSleepersOld.isEmpty()) {
             player.getServer().getPlayerManager().broadcast(Text.literal("All players are now good to sleep!")
                     .setStyle(Style.EMPTY.withColor(Formatting.DARK_AQUA)), false);
+
+            player.getServer().getGameRules().get(GameRules.PLAYERS_SLEEPING_PERCENTAGE).set(0, player.getServer());
         }
 
         // Have to use an array to get around self-reference
