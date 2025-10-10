@@ -17,15 +17,15 @@ public class SleepEvents {
     public static void init() {
         EntitySleepEvents.START_SLEEPING.register((player, sleepingPos) -> {
             if (!Status.noSleepers.isEmpty()) {
-                ServerPlayerEntity sPlayer = player.getServer().getPlayerManager().getPlayer(player.getUuid());
+                ServerPlayerEntity sPlayer = player.getEntityWorld().getServer().getPlayerManager().getPlayer(player.getUuid());
                 sPlayer.networkHandler.sendPacket(new TitleFadeS2CPacket(0, 12000, 0));
                 sPlayer.networkHandler.sendPacket(new TitleS2CPacket(Text.literal("No Sleep")));
-                sPlayer.networkHandler.sendPacket(new SubtitleS2CPacket(Text.literal(getSubtext(player.getServer()))));
+                sPlayer.networkHandler.sendPacket(new SubtitleS2CPacket(Text.literal(getSubtext(player.getEntityWorld().getServer()))));
             }
         });
 
         EntitySleepEvents.STOP_SLEEPING.register((player, sleepingPos) -> {
-            ServerPlayerEntity sPlayer = player.getServer().getPlayerManager().getPlayer(player.getUuid());
+            ServerPlayerEntity sPlayer = player.getEntityWorld().getServer().getPlayerManager().getPlayer(player.getUuid());
             sPlayer.networkHandler.sendPacket(new ClearTitleS2CPacket(true));
         });
     }

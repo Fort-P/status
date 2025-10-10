@@ -8,6 +8,7 @@ import net.minecraft.server.PlayerManager;
 import net.minecraft.server.network.ServerPlayerEntity;
 import net.minecraft.sound.SoundEvents;
 import net.minecraft.text.Style;
+import net.minecraft.text.StyleSpriteSource;
 import net.minecraft.text.Text;
 import net.minecraft.util.Formatting;
 import net.minecraft.util.Identifier;
@@ -18,6 +19,8 @@ import org.fortp.status.utils.TickScheduler;
 
 import java.util.HashSet;
 import java.util.UUID;
+
+import static org.fortp.status.Status.STATUS_FONT;
 
 public class StatusGui extends SimpleGui {
     private final HashSet<UUID> noSleepersOld;
@@ -70,7 +73,7 @@ public class StatusGui extends SimpleGui {
             title.append("_");
         }
 
-        this.setTitle(Text.literal(title.toString()).setStyle(Style.EMPTY.withFont(Identifier.of(Status.ID, "status")).withColor(Formatting.WHITE)));
+        this.setTitle(Text.literal(title.toString()).setStyle(Style.EMPTY.withFont(STATUS_FONT).withColor(Formatting.WHITE)));
     
         // Hide the Inventory text
         this.setSlot(45, new GuiElementBuilder(Identifier.of(Status.ID, "titlehider")).hideTooltip());
@@ -137,9 +140,9 @@ public class StatusGui extends SimpleGui {
         if (player instanceof PlayerData playerData) {
             playerData.status$setAvailability(newAvailability);
             player.setCustomName(Text.literal(playerData.status$getAvailability() + "/" + playerData.status$getStatus())
-                    .setStyle(Style.EMPTY.withFont(Identifier.of(Status.ID, "status")))
-                    .append(Text.literal(" " + player.getGameProfile().getName())
-                            .setStyle(Style.EMPTY.withFont(Style.DEFAULT_FONT_ID))));
+                    .setStyle(Style.EMPTY.withFont(STATUS_FONT))
+                    .append(Text.literal(" " + player.getGameProfile().name())
+                            .setStyle(Style.EMPTY.withFont(StyleSpriteSource.DEFAULT))));
             customizeTitle(playerData.status$getAvailability(), playerData.status$getStatus(), playerData.status$getNoSleep());
 
             player.playSound(SoundEvents.UI_BUTTON_CLICK.value());
@@ -151,9 +154,9 @@ public class StatusGui extends SimpleGui {
         if (player instanceof PlayerData playerData) {
             playerData.status$setStatus(newStatus);
             player.setCustomName(Text.literal(playerData.status$getAvailability() + "/" + playerData.status$getStatus())
-                    .setStyle(Style.EMPTY.withFont(Identifier.of(Status.ID, "status")))
-                    .append(Text.literal(" " + player.getGameProfile().getName())
-                            .setStyle(Style.EMPTY.withFont(Style.DEFAULT_FONT_ID))));
+                    .setStyle(Style.EMPTY.withFont(STATUS_FONT))
+                    .append(Text.literal(" " + player.getGameProfile().name())
+                            .setStyle(Style.EMPTY.withFont(StyleSpriteSource.DEFAULT))));
             customizeTitle(playerData.status$getAvailability(), playerData.status$getStatus(), playerData.status$getNoSleep());
 
             player.playSound(SoundEvents.UI_BUTTON_CLICK.value());
@@ -162,25 +165,25 @@ public class StatusGui extends SimpleGui {
 
     @Override
     public void onClose() {
-        PlayerManager playerManager = player.getServer().getPlayerManager();
+        PlayerManager playerManager = player.getEntityWorld().getServer().getPlayerManager();
         playerManager.sendToAll(new PlayerListS2CPacket(PlayerListS2CPacket.Action.UPDATE_DISPLAY_NAME, player));
 
         if (player instanceof PlayerData playerData && playerData.status$getNoSleep() && !Status.noSleepers.contains(player.getUuid())) {
-            if (player.getServer().getOverworld().getTimeOfDay() %  24000 > 12000) {
+            if (player.getEntityWorld().getServer().getOverworld().getTimeOfDay() %  24000 > 12000) {
                 playerData.status$setNoSleep(false);
                 player.sendMessage(Text.literal("It's too late to request no sleeping tonight")
                         .setStyle(Style.EMPTY.withColor(Formatting.DARK_AQUA)), false);
             } else {
                 Status.noSleepers.add(player.getUuid());
-                player.getServer().getGameRules().get(GameRules.PLAYERS_SLEEPING_PERCENTAGE).set(75, player.getServer());
+                player.getEntityWorld().getServer().getGameRules().get(GameRules.PLAYERS_SLEEPING_PERCENTAGE).set(75, player.getEntityWorld().getServer());
             }
         }
 
         if (Status.noSleepers.isEmpty() && !this.noSleepersOld.isEmpty()) {
-            player.getServer().getPlayerManager().broadcast(Text.literal("All players are now good to sleep!")
+            player.getEntityWorld().getServer().getPlayerManager().broadcast(Text.literal("All players are now good to sleep!")
                     .setStyle(Style.EMPTY.withColor(Formatting.DARK_AQUA)), false);
 
-            player.getServer().getGameRules().get(GameRules.PLAYERS_SLEEPING_PERCENTAGE).set(0, player.getServer());
+            player.getEntityWorld().getServer().getGameRules().get(GameRules.PLAYERS_SLEEPING_PERCENTAGE).set(0, player.getEntityWorld().getServer());
         }
 
         // Have to use an array to get around self-reference
